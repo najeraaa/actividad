@@ -1,11 +1,12 @@
-name: Work 1 Dorx
-
 on: [push]
 
 jobs:
-  build:
+  build-node:
     runs-on: ubuntu-latest
-
+    container: node:16
     steps:
-      - name: Print Something
-        run: echo "Hola Pitaya!"
+      run: echo "TESTING"
+      run: node --version
+      run: npm --version
+      uses: actions/checkout@v3
+      run: node app.js
