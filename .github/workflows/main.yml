@@ -1,14 +1,24 @@
-on: push
+name: Activitarea Node
+
+on: [push]
 
 jobs:
-  buid-node:
+  node-job:
     runs-on: ubuntu-latest
-    container: node:16
+    container: node:18
 
     steps:
-      - run: echo "TESTING"
-      - run: node --version
-      - run: npm --version
-      - uses: actions/checkout@v3
-      - run: npm install
-      - run: node app.js
+      - name: Clonar repositorio
+        uses: actions/checkout@v3
+
+      - name: Ver version de Node
+        run: node -v
+
+      - name: Ver version de npm
+        run: npm -v
+
+      - name: Instalar dependencias
+        run: npm install
+
+      - name: Ejecutar app
+        run: node app.js
