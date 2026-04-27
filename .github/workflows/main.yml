@@ -1,24 +1,20 @@
-name: Activitarea Node
+name: Activitarea Python
 
 on: [push]
 
 jobs:
-  node-job:
+  python-job:
     runs-on: ubuntu-latest
-    container: node:18
+    container: python:3.11
 
     steps:
       - name: Clonar repositorio
         uses: actions/checkout@v3
-
-      - name: Ver version de Node
-        run: node -v
-
-      - name: Ver version de npm
-        run: npm -v
-
-      - name: Instalar dependencias
-        run: npm install
-
-      - name: Ejecutar app
-        run: node app.js
+      - name: Ver version de Python
+        run: python --version
+      - name: Crear archivo Python
+        run: |
+          echo 'print("Hola ")' > app.py
+          echo 'print("dentro de un contenedor")' >> app.py
+      - name: Ejecutar programa
+        run: python app.py
