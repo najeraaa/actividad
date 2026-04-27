@@ -1,12 +1,14 @@
-on: [push]
+on: push
 
 jobs:
-  build-node:
+  buid-node:
     runs-on: ubuntu-latest
     container: node:16
+
     steps:
-      run: echo "TESTING"
-      run: node --version
-      run: npm --version
-      uses: actions/checkout@v3
-      run: node app.js
+      - run: echo "TESTING"
+      - run: node --version
+      - run: npm --version
+      - uses: actions/checkout@v3
+      - run: npm install
+      - run: node app.js
